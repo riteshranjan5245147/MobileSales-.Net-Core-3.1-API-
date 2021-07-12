@@ -1,0 +1,178 @@
+{
+	"info": {
+		"_postman_id": "dfa72da1-c176-4183-8954-93e3ed82da16",
+		"name": "MobileSales",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CRUD",
+			"item": [
+				{
+					"name": "GetAllSales",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44370/api/Sales/GetAll",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44370",
+							"path": [
+								"api",
+								"Sales",
+								"GetAll"
+							]
+						},
+						"description": "To get all sales at once."
+					},
+					"response": []
+				},
+				{
+					"name": "AddSale",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ProductName\":\"OnePlus Nord CE(6+128)\",\r\n    \"ProductModel\": \"OnePlus\",\r\n    \"CP\": 19000,\r\n    \"SP\": 22000,\r\n    \"DateOfSelling\": \"2021-06-07T18:25:43.511Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44370/api/Sales/Add",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44370",
+							"path": [
+								"api",
+								"Sales",
+								"Add"
+							]
+						},
+						"description": "To add a new mobile sale"
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateSale",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Id\": 1,\r\n    \"ProductName\":\"RealMe XT(4+64)\",\r\n    \"ProductModel\": \"RealMe\",\r\n    \"CP\": 16000,\r\n    \"SP\": 18000,\r\n    \"DateOfSelling\": \"2021-04-05T18:25:43.511Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44370/api/Sales/Update",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44370",
+							"path": [
+								"api",
+								"Sales",
+								"Update"
+							]
+						},
+						"description": "to update Sale. Accept a Sale type object "
+					},
+					"response": []
+				},
+				{
+					"name": "GetSaleById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44370/api/Sales/GetById",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44370",
+							"path": [
+								"api",
+								"Sales",
+								"GetById"
+							]
+						},
+						"description": "To get the sale using id. Need to pass only id"
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteSale",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44370/api/Sales/6",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44370",
+							"path": [
+								"api",
+								"Sales",
+								"6"
+							]
+						},
+						"description": "To delelte a pericular Sale using Id. Need to pass only id."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GetMonthlySales",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44370/api/MonthlySales/GetMonthlySales/2021-05-01T00:00:00.00/2021-06-01T00:00:00.00",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44370",
+					"path": [
+						"api",
+						"MonthlySales",
+						"GetMonthlySales",
+						"2021-05-01T00:00:00.00",
+						"2021-06-01T00:00:00.00"
+					]
+				},
+				"description": "Get monthly sales. Accepts from and to date in parameters.Date needs to specified in url by \"/\"."
+			},
+			"response": []
+		}
+	]
+}

@@ -44,12 +44,12 @@ namespace MobileStoreMonthlyReport.Controllers
 
         [HttpGet]
         [Route("GetMonthlyBrandWiseSales/{fromDate}/{toDate}")]
-        public IActionResult GetMonthlyBrandWiseSales(DateTime fromDate, DateTime toDate)
+        public IActionResult GetMonthlyBrandWiseSales(DateTime fromDate, DateTime toDate, string brand)
         {
             try
             {
                 var allData = _salesData.GetAll();
-                var requiredData = allData.FindAll(x => x.DateOfSelling >= fromDate && x.DateOfSelling <= toDate).OrderBy(y=>y.ProductName).ToList();
+                var requiredData = allData.FindAll(x => x.DateOfSelling >= fromDate && x.DateOfSelling <= toDate).OrderBy(y=>y.ProductName == brand).ToList();
                 if (requiredData.Count > 0)
                 {
                     return Ok(requiredData);
