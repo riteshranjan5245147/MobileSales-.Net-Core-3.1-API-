@@ -75,43 +75,33 @@ namespace MobileStoreMonthlyReport.Controllers
         {
             try
             {
-                var result = _salesData.GetById(sale.Id);
-                if (result == null)
-                {
-                    return Ok("No such sale found");
-                }
-                else
-                {
-                    return Ok(_salesData.Update(sale));
-                }
-
+                return Ok(_salesData.Update(sale));
             }
             catch (Exception ex)
             {
+                if (ex.GetType().ToString() == "Microsoft.EntityFrameworkCore.DbUpdateConcurrencyException")
+                {
+                    return Ok("No such sale found");
+                }
                 return StatusCode(500, ex.InnerException.Message);
             }
         }
 
         [HttpDelete]
-        [Route("Delete")]
+        [Route("Delete/{id}")]
         public IActionResult Delete(int id)
         {
             try
             {
-                var result = _salesData.GetById(id);
-                if (result == null)
-                {
-                    return Ok("No such sale found");
-                }
-                else
-                {
-                    _salesData.Delete(id);
-                    return Ok($"Successfully deleted sale with id {id}");
-                }
-
+                _salesData.Delete(id);
+                return Ok($"Successfully deleted sale with id {id}");
             }
             catch (Exception ex)
             {
+                if (ex.GetType().ToString() == "System.ArgumentNullException")
+                {
+                    return Ok("No such sale found");
+                }
                 return StatusCode(500, ex.InnerException.Message);
             }
         }
