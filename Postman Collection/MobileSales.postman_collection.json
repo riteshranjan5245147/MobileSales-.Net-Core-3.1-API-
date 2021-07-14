@@ -68,7 +68,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"Id\": 1,\r\n    \"ProductName\":\"RealMe XT(4+64)\",\r\n    \"ProductModel\": \"RealMe\",\r\n    \"CP\": 16000,\r\n    \"SP\": 18000,\r\n    \"DateOfSelling\": \"2021-04-05T18:25:43.511Z\"\r\n}",
+							"raw": "{\r\n    \"Id\": 1000,\r\n    \"ProductName\":\"RealMe XT(4+64)\",\r\n    \"ProductModel\": \"RealMe\",\r\n    \"CP\": 16000,\r\n    \"SP\": 18000,\r\n    \"DateOfSelling\": \"2021-04-05T18:25:43.511Z\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -120,7 +120,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:44370/api/Sales/6",
+							"raw": "https://localhost:44370/api/Sales/Delete/1000",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -129,7 +129,8 @@
 							"path": [
 								"api",
 								"Sales",
-								"6"
+								"Delete",
+								"1000"
 							]
 						},
 						"description": "To delelte a pericular Sale using Id. Need to pass only id."
@@ -171,6 +172,30 @@
 					]
 				},
 				"description": "Get monthly sales. Accepts from and to date in parameters.Date needs to specified in url by \"/\"."
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:44370/api/MonthlySales/GetMonthlyBrandWiseSales/2021-01-01T00:00:00.00/2021-06-01T00:00:00.00/Realme",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44370/api/MonthlySales/GetMonthlyBrandWiseSales/2021-01-01T00:00:00.00/2021-06-01T00:00:00.00/Realme",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44370",
+					"path": [
+						"api",
+						"MonthlySales",
+						"GetMonthlyBrandWiseSales",
+						"2021-01-01T00:00:00.00",
+						"2021-06-01T00:00:00.00",
+						"Realme"
+					]
+				}
 			},
 			"response": []
 		}

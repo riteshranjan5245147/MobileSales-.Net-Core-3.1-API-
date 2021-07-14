@@ -43,7 +43,7 @@ namespace MobileStoreMonthlyReport.Controllers
         }
 
         [HttpGet]
-        [Route("GetMonthlyBrandWiseSales/{fromDate}/{toDate}")]
+        [Route("GetMonthlyBrandWiseSales/{fromDate}/{toDate}/{brand}")]
         public IActionResult GetMonthlyBrandWiseSales(DateTime fromDate, DateTime toDate, string brand)
         {
             try
