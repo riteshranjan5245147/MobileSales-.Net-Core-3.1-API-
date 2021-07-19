@@ -7,11 +7,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using MobileStoreMonthlyReport.MobileSalesData;
 using MobileStoreMonthlyReport.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace MobileStoreMonthlyReport
@@ -33,6 +35,23 @@ namespace MobileStoreMonthlyReport
                 Configuration.GetConnectionString("SalesDataConnectionString")));
             services.AddScoped<IGenericCRUD<Sales>, GenericCRUD<Sales>>();
 
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = "JwtBearer";
+                options.DefaultChallengeScheme = "JwtBearer";
+            })
+                .AddJwtBearer("JwtBearer", jwtOptions =>
+                {
+                    jwtOptions.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
+                    {
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JwtConfig:Secret"])),
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidIssuer = "https://localhost:44370/",
+                        ValidAudience = "https://localhost:44370/",
+                        ValidateLifetime = true
+                    };
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +63,8 @@ namespace MobileStoreMonthlyReport
             }
 
             app.UseHttpsRedirection();
+
+            app.UseAuthentication();
 
             app.UseRouting();
 

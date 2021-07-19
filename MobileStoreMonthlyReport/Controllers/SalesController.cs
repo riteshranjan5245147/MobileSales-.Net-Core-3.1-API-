@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MobileStoreMonthlyReport.MobileSalesData;
 using MobileStoreMonthlyReport.Models;
@@ -20,6 +21,7 @@ namespace MobileStoreMonthlyReport.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         [Route("GetAll")]
         public IActionResult GetAll()
         {
@@ -35,6 +37,7 @@ namespace MobileStoreMonthlyReport.Controllers
 
         [HttpPost]
         [Route("Add")]
+        [Authorize]
         public IActionResult Add(Sales sale)
         {
             try
@@ -48,7 +51,8 @@ namespace MobileStoreMonthlyReport.Controllers
         }
 
         [HttpGet]
-        [Route("GetById")]
+        [Authorize]
+        [Route("GetById/{id}")]
         public IActionResult GetById(int id)
         {
             try
@@ -70,6 +74,7 @@ namespace MobileStoreMonthlyReport.Controllers
         }
 
         [HttpPatch]
+        [Authorize]
         [Route("Update")]
         public IActionResult Update(Sales sale)
         {
@@ -88,6 +93,7 @@ namespace MobileStoreMonthlyReport.Controllers
         }
 
         [HttpDelete]
+        [Authorize]
         [Route("Delete/{id}")]
         public IActionResult Delete(int id)
         {

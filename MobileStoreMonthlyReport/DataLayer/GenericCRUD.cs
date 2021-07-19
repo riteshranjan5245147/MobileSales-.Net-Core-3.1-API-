@@ -46,5 +46,18 @@ namespace MobileStoreMonthlyReport.MobileSalesData
             _context.SaveChanges();
             return entity;
         }
+
+        //public TEntity GetTable(TEntity entity)
+        //{
+        //    entity = _context.Set(entity.GetType());
+        //    return entity;
+        //}
+
+        //public List<TEntity> GetMonthlyBrandWiseSales(DateTime fromDate, DateTime toDate, string brand)
+        //{
+        //    var table = _context.Set<Sales>();
+        //    return table.Where(x => x.ProductModel == brand && x.DateOfSelling >= fromDate && x.DateOfSelling <= toDate).ToList();
+            
+        //}
     }
 }

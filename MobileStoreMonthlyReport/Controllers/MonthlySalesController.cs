@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MobileStoreMonthlyReport.MobileSalesData;
 using MobileStoreMonthlyReport.Models;
@@ -20,6 +21,7 @@ namespace MobileStoreMonthlyReport.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         [Route("GetMonthlySales/{fromDate}/{toDate}")]
         public IActionResult GetMonthlySales(DateTime fromDate, DateTime toDate)
         {
@@ -43,6 +45,7 @@ namespace MobileStoreMonthlyReport.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         [Route("GetMonthlyBrandWiseSales/{fromDate}/{toDate}/{brand}")]
         public IActionResult GetMonthlyBrandWiseSales(DateTime fromDate, DateTime toDate, string brand)
         {
