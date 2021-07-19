@@ -6,6 +6,7 @@ using MobileStoreMonthlyReport.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace MobileStoreMonthlyReport.Controllers
@@ -27,8 +28,7 @@ namespace MobileStoreMonthlyReport.Controllers
         {
             try
             {
-                var allData = _salesData.GetAll();
-                var requiredData = allData.FindAll(x => x.DateOfSelling >= fromDate && x.DateOfSelling <= toDate);
+                var requiredData = _salesData.Query(x => x.DateOfSelling >= fromDate && x.DateOfSelling <= toDate, null).ToList();
                 if (requiredData.Count > 0)
                 {
                     return Ok(requiredData);
@@ -51,8 +51,7 @@ namespace MobileStoreMonthlyReport.Controllers
         {
             try
             {
-                var allData = _salesData.GetAll();
-                var requiredData = allData.FindAll(x => x.DateOfSelling >= fromDate && x.DateOfSelling <= toDate).OrderBy(y=>y.ProductName == brand).ToList();
+                var requiredData = _salesData.Query(x => x.ProductModel == brand && x.DateOfSelling >= fromDate && x.DateOfSelling <= toDate, null).ToList();
                 if (requiredData.Count > 0)
                 {
                     return Ok(requiredData);

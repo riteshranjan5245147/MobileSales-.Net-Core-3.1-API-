@@ -61,3 +61,4 @@ D:\Projects\.NET CORE Basics\API\MobileStoreMonthlyReport\MobileStoreMonthlyRepo
 D:\Projects\.NET CORE Basics\API\MobileStoreMonthlyReport\MobileStoreMonthlyReport\obj\Debug\netcoreapp3.1\MobileStoreMonthlyReport.dll
 D:\Projects\.NET CORE Basics\API\MobileStoreMonthlyReport\MobileStoreMonthlyReport\obj\Debug\netcoreapp3.1\MobileStoreMonthlyReport.pdb
 D:\Projects\.NET CORE Basics\API\MobileStoreMonthlyReport\MobileStoreMonthlyReport\obj\Debug\netcoreapp3.1\MobileStoreMonthlyReport.genruntimeconfig.cache
+D:\Projects\.NET CORE Basics\API\MobileStoreMonthlyReport\MobileStoreMonthlyReport\obj\Debug\netcoreapp3.1\MobileStoreMonthlyReport.csprojAssemblyReference.cache

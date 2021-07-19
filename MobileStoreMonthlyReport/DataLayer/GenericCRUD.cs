@@ -3,6 +3,7 @@ using MobileStoreMonthlyReport.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace MobileStoreMonthlyReport.MobileSalesData
@@ -47,17 +48,24 @@ namespace MobileStoreMonthlyReport.MobileSalesData
             return entity;
         }
 
-        //public TEntity GetTable(TEntity entity)
-        //{
-        //    entity = _context.Set(entity.GetType());
-        //    return entity;
-        //}
+        public virtual IQueryable<TEntity> Query(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null)
+        {
+            try
+            {
+                IQueryable<TEntity> query = _dbSet;
 
-        //public List<TEntity> GetMonthlyBrandWiseSales(DateTime fromDate, DateTime toDate, string brand)
-        //{
-        //    var table = _context.Set<Sales>();
-        //    return table.Where(x => x.ProductModel == brand && x.DateOfSelling >= fromDate && x.DateOfSelling <= toDate).ToList();
-            
-        //}
+                if (filter != null)
+                    query = query.Where(filter);
+
+                if (orderBy != null)
+                    query = orderBy(query);
+
+                return query;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
